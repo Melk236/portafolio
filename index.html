@@ -1,296 +1,1940 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en">
-
+<html lang="es" class="scroll-smooth">
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Mohamed El Khassal - Software Developer Portfolio</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <script id="tailwind-config">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed El Khassal | Full-Stack Developer</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%230969da'/><stop offset='100%' stop-color='%238250df'/></linearGradient></defs><circle cx='50' cy='50' r='45' fill='url(%23g)'/><text x='50' y='62' text-anchor='middle' fill='white' font-family='Arial,sans-serif' font-size='36' font-weight='bold'>M</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" id="hljs-light">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" id="hljs-dark" disabled>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/html.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
         tailwind.config = {
-            darkMode: "class",
+            darkMode: 'class',
             theme: {
                 extend: {
-                    colors: {
-                        "primary": "#1173d4",
-                        "background-light": "#f6f7f8",
-                        "background-dark": "#101922",
-                        "surface-dark": "#19222c",
-                    },
                     fontFamily: {
-                        "display": ["Space Grotesk", "sans-serif"]
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
                     },
-                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
-                },
-            },
+                    colors: {
+                        github: {
+                            light: '#f6f8fa',
+                            border: '#d0d7de',
+                            text: '#24292f',
+                            muted: '#57606a',
+                            link: '#0969da',
+                            success: '#1a7f37',
+                            accent: '#8250df',
+                        },
+                        dark: {
+                            bg: '#0d1117',
+                            surface: '#161b22',
+                            border: '#30363d',
+                            text: '#c9d1d9',
+                            muted: '#8b949e',
+                            link: '#58a6ff',
+                        }
+                    }
+                }
+            }
         }
     </script>
+    
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f6f8fa;
+            --text-primary: #24292f;
+            --text-secondary: #57606a;
+            --border-color: #d0d7de;
+            --link-color: #0969da;
+            --accent-green: #1a7f37;
+            --accent-purple: #8250df;
+        }
+        
+        .dark {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --border-color: #30363d;
+            --link-color: #58a6ff;
+            --accent-green: #3fb950;
+            --accent-purple: #a371f7;
+        }
+        
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .markdown-body {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .markdown-body h1 { font-size: 2em; font-weight: 600; margin: 24px 0 16px; }
+        .markdown-body h2 { font-size: 1.5em; font-weight: 600; margin: 24px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color); }
+        .markdown-body h3 { font-size: 1.25em; font-weight: 600; margin: 24px 0 16px; }
+        .markdown-body p { margin: 0 0 16px; }
+        .markdown-body a { color: var(--link-color); text-decoration: none; }
+        .markdown-body a:hover { text-decoration: underline; }
+        .markdown-body ul, .markdown-body ol { padding-left: 2em; margin: 0 0 16px; }
+        .markdown-body li { margin: 4px 0; }
+        .markdown-body code { 
+            background: rgba(175, 184, 193, 0.2); 
+            padding: 2px 6px; 
+            border-radius: 6px; 
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 85%;
+        }
+        .dark .markdown-body code { background: rgba(110, 118, 129, 0.4); }
+        
+        .markdown-body pre {
+            background: #f6f8fa;
+            border-radius: 6px;
+            padding: 16px;
+            overflow: auto;
+            margin: 16px 0;
+        }
+        .dark .markdown-body pre { background: #161b22; }
+        
+        .markdown-body pre code { background: none; padding: 0; }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .tooltip {
+            position: fixed;
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.2s;
+            white-space: nowrap;
+        }
+        
+        .tooltip.visible {
+            opacity: 1;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #238636, #2ea043);
+            border-radius: 4px;
+            transition: width 1s ease-out;
+        }
+        
+        .heatmap {
+            display: grid;
+            grid-template-columns: repeat(53, 1fr);
+            gap: 3px;
+        }
+        
+        .heatmap-cell {
+            aspect-ratio: 1;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .heatmap-cell:hover {
+            transform: scale(1.2);
+        }
+        
+        /* Contribution Graph Colors - Light Mode */
+        .contribution-0 { background: #ebedf0; }
+        .contribution-1 { background: #9be9a8; }
+        .contribution-2 { background: #40c463; }
+        .contribution-3 { background: #30a14e; }
+        .contribution-4 { background: #216e39; }
+        
+        /* Contribution Graph Colors - Dark Mode */
+        .dark .contribution-0 { background: #161b22; }
+        .dark .contribution-1 { background: #0e4429; }
+        .dark .contribution-2 { background: #006d32; }
+        .dark .contribution-3 { background: #26a641; }
+        .dark .contribution-4 { background: #39d353; }
+        
+        .toc-item {
+            padding: 4px 0;
+            border-left: 2px solid transparent;
+            padding-left: 12px;
+            margin-left: -14px;
+            transition: all 0.2s;
+        }
+        
+        .toc-item:hover, .toc-item.active {
+            border-left-color: var(--link-color);
+            color: var(--link-color);
+        }
+        
+        .toc-item.sub {
+            padding-left: 24px;
+            font-size: 14px;
+        }
+        
+        .collapsible {
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            margin: 16px 0;
+            overflow: hidden;
+        }
+        
+        .collapsible-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            background: var(--bg-secondary);
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+        }
+        
+        .collapsible-header:hover {
+            background: var(--border-color);
+        }
+        
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .collapsible.expanded .collapsible-content {
+            max-height: 2000px;
+        }
+        
+        .collapsible.expanded .chevron {
+            transform: rotate(180deg);
+        }
+        
+        .chevron {
+            transition: transform 0.3s;
+        }
+        
+        .code-editor {
+            background: #1e1e1e;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 16px 0;
+        }
+        
+        .code-editor-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 16px;
+            background: #2d2d2d;
+            border-bottom: 1px solid #3e3e3e;
+        }
+        
+        .code-editor textarea {
+            width: 100%;
+            min-height: 150px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border: none;
+            padding: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            resize: vertical;
+            outline: none;
+        }
+        
+        .code-output {
+            background: #0d1117;
+            padding: 16px;
+            border-top: 1px solid #3e3e3e;
+            font-family: 'JetBrains Mono', monospace;
+            min-height: 50px;
+            white-space: pre-wrap;
+        }
+        
+        .commit-timeline {
+            position: relative;
+            padding-left: 24px;
+        }
+        
+        .commit-timeline::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+        
+        .commit-item {
+            position: relative;
+            padding: 16px 0;
+        }
+        
+        .commit-item::before {
+            content: '';
+            position: absolute;
+            left: -22px;
+            top: 20px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+        }
+        
+        .commit-item.highlight::before {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+        }
+        
+        .copy-btn {
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        pre:hover .copy-btn {
+            opacity: 1;
+        }
+        
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 9999;
+            display: none;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 100px;
+        }
+        
+        .search-overlay.active {
+            display: flex;
+        }
+        
+        .search-box {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            width: 600px;
+            max-width: 90vw;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-green);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 10000;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .lang-bar {
+            height: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .lang-bar:hover {
+            transform: scaleY(1.3);
+        }
+        
+        .skeleton {
+            background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--border-color) 50%, var(--bg-secondary) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 4px;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .contribution-graph-wrapper {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            #contribution-graph {
+                min-width: 750px;
+            }
+        }
+    </style>
 </head>
-
-<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-300">
-    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
-        <!-- Top Navigation Bar -->
-        <header
-            class="sticky top-0 z-50 flex items-center justify-center border-b border-solid border-gray-200/10 dark:border-white/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
-            <div class="flex w-full max-w-5xl items-center justify-between whitespace-nowrap px-4 sm:px-6 lg:px-8 py-3">
-                <div class="flex items-center gap-4 text-white">
-                    <span class="material-symbols-outlined text-primary text-2xl">
-                        integration_instructions
-                    </span>
-                    <h2 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">
-                        Mohamed El Khassal</h2>
+<body class="antialiased">
+    <!-- Notification Container -->
+    <div id="notification" class="notification"></div>
+    
+    <!-- Global Tooltip -->
+    <div id="global-tooltip" class="tooltip"></div>
+    
+    <!-- Search Overlay -->
+    <div id="search-overlay" class="search-overlay">
+        <div class="search-box">
+            <div class="p-4 border-b border-[var(--border-color)]">
+                <div class="flex items-center gap-3">
+                    <i data-lucide="search" class="w-5 h-5 text-[var(--text-secondary)]"></i>
+                    <input type="text" id="search-input" placeholder="Buscar comandos, secciones, proyectos..." 
+                           class="flex-1 bg-transparent border-none outline-none text-[var(--text-primary)]">
+                    <kbd class="px-2 py-1 text-xs bg-[var(--bg-secondary)] rounded">ESC</kbd>
                 </div>
-                <div class="hidden md:flex items-center gap-9">
-                    <a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors"
-                        href="#about">Biografía</a>
-                    <a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors"
-                        href="#experience">Experiencia</a>
-                    <a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors"
-                        href="#projects">Proyectos</a>
-                </div>
-                <div class="flex gap-2">
-                    <a class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:opacity-90 transition-opacity"
-                        href="#contact">
-                        <span class="truncate">Contactar</span>
-                    </a>
+            </div>
+            <div id="search-results" class="p-2 max-h-80 overflow-y-auto">
+                <!-- Results will be populated here -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Layout -->
+    <div class="min-h-screen">
+        <!-- Header -->
+        <header class="sticky top-0 z-50 border-b border-[var(--border-color)] bg-[var(--bg-primary)]/95 backdrop-blur">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center gap-4">
+                        <button id="menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-[var(--bg-secondary)]">
+                            <i data-lucide="menu" class="w-5 h-5"></i>
+                        </button>
+                        <a href="#" class="flex items-center gap-2 text-xl font-semibold">
+                            <i data-lucide="github" class="w-8 h-8"></i>
+                            <span class="hidden sm:inline">Melk236</span>
+                        </a>
+                    </div>
+                    
+                    <div class="flex items-center gap-3">
+                        <button id="search-trigger" class="p-2 rounded-lg hover:bg-[var(--bg-secondary)] text-[var(--text-secondary)]">
+                            <i data-lucide="search" class="w-5 h-5"></i>
+                        </button>
+                        
+                        <div class="relative group">
+                            <button id="theme-toggle" class="p-2 rounded-lg hover:bg-[var(--bg-secondary)] text-[var(--text-secondary)]">
+                                <i data-lucide="sun" class="w-5 h-5 dark:hidden"></i>
+                                <i data-lucide="moon" class="w-5 h-5 hidden dark:block"></i>
+                            </button>
+                        </div>
+                        
+                        <a href="https://github.com/Melk236" target="_blank" 
+                           class="flex items-center gap-2 px-3 py-1.5 bg-[var(--bg-secondary)] hover:bg-[var(--border-color)] rounded-lg text-sm font-medium transition-colors">
+                            <i data-lucide="github" class="w-4 h-4"></i>
+                            <span class="hidden sm:inline">Follow</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </header>
-        <main class="flex flex-1 justify-center py-5">
-            <div class="flex w-full max-w-5xl flex-col px-4 sm:px-6 lg:px-8">
-                <!-- Hero Section -->
-                <section class="py-10 md:py-20" id="about">
-                    <div class="flex flex-col gap-10 md:flex-row md:items-center">
-                        <div class="flex-1">
-                            <div class="flex flex-col gap-6 text-left">
-                                <div class="flex flex-col gap-2">
-                                    <h1
-                                        class="text-gray-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-5xl">
-                                        Mohamed El Khassal - Full-Stack Software Engineer
-                                    </h1>
-                                    <h2
-                                        class="text-gray-600 dark:text-gray-400 text-base font-normal leading-normal md:text-lg">
-                                        Técnico Superior en Desarrollo de Aplicaciones Web con sólida formación en
-                                        tecnologías frontend y backend. Desarrollador enfocado
-                                        en crear soluciones web eficientes y escalables, con experiencia práctica
-                                        aplicando conocimientos en proyectos reales que optimizan
-                                        procesos empresariales.
-                                    </h2>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Sidebar Navigation -->
+                <!-- Mobile Menu Overlay -->
+                <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden" onclick="closeMobileMenu()"></div>
+                
+                <aside id="sidebar" class="hidden lg:block lg:col-span-3 fixed lg:relative inset-y-0 left-0 z-50 w-72 lg:w-auto bg-[var(--bg-primary)] lg:bg-transparent border-r lg:border-r-0 border-[var(--border-color)] transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out overflow-y-auto lg:overflow-visible">
+                    <!-- Mobile Sidebar Header -->
+                    <div class="lg:hidden flex items-center justify-between p-4 border-b border-[var(--border-color)]">
+                        <span class="font-semibold">Menú</span>
+                        <button onclick="closeMobileMenu()" class="p-2 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors">
+                            <i data-lucide="x" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                    
+                    <nav class="lg:sticky lg:top-24 p-4 lg:p-0">
+                        <div class="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-3">
+                            Contenido
+                        </div>
+                        <div id="toc" class="space-y-1">
+                            <!-- TOC items will be generated -->
+                        </div>
+                        
+                        <div class="mt-8 pt-6 border-t border-[var(--border-color)]">
+                            <div class="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-3">
+                                Acciones Rápidas
+                            </div>
+                            <div class="space-y-2">
+                                <button onclick="downloadResume()" 
+                                        class="w-full flex items-center gap-2 px-3 py-2 text-sm rounded-lg hover:bg-[var(--bg-secondary)] transition-colors">
+                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                    Descargar CV
+                                </button>
+                                <button onclick="toggleRawMode()" 
+                                        class="w-full flex items-center gap-2 px-3 py-2 text-sm rounded-lg hover:bg-[var(--bg-secondary)] transition-colors">
+                                    <i data-lucide="code" class="w-4 h-4"></i>
+                                    Ver Markdown
+                                </button>
+                                <button onclick="showGitLog()" 
+                                        class="w-full flex items-center gap-2 px-3 py-2 text-sm rounded-lg hover:bg-[var(--bg-secondary)] transition-colors">
+                                    <i data-lucide="git-commit" class="w-4 h-4"></i>
+                                    Git Log
+                                </button>
+                            </div>
+                        </div>
+                    </nav>
+                </aside>
+                
+                <!-- Main Content -->
+                <main class="lg:col-span-9">
+                    <article class="markdown-body">
+                        <!-- Hero Section -->
+                        <div class="fade-in">
+                            <h1 id="title" class="flex items-center gap-3 flex-wrap">
+                                <span class="typing-cursor">Hola, soy Mohamed El Khassal</span>
+                                <img src="https://raw.githubusercontent.com/ABSphreak/ABSphreak/master/gifs/Hi.gif" width="35px" alt="wave">
+                            </h1>
+                            
+                            <p class="text-xl text-[var(--text-secondary)]">
+                                <strong>Full-Stack Software Developer</strong> 
+                                <span id="location-badge" class="inline-flex items-center gap-1 ml-2">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/1200px-Flag_of_Spain.svg.png" width="20" alt="Spain">
+                                    Almería, España
+                                </span>
+                            </p>
+                            
+                            <!-- Badges -->
+                            <div class="flex flex-wrap gap-2 mt-4" id="badges-container">
+                                <!-- Badges will be generated -->
+                            </div>
+                        </div>
+                        
+                        <!-- GitHub Stats Cards -->
+                        <div id="github-stats" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+                            <!-- Stats will be populated -->
+                        </div>
+                        
+                        <!-- Contribution Graph -->
+                        <div class="mt-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="text-base">
+                                    <span id="contributions-count" class="font-bold text-[var(--text-primary)]">368</span> 
+                                    <span class="text-[var(--text-secondary)]">contributions in the last year</span>
                                 </div>
-                                <div class="flex flex-wrap gap-4 items-center">
-                                    <a class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:opacity-90 transition-opacity"
-                                        href="#contact">
-                                        <span class="truncate">Contactar</span>
-                                    </a>
-                                    <div class="flex gap-2">
-                                        <a class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-gray-200 dark:bg-surface-dark text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                                            href="https://github.com/Melk236">
-                                            <svg aria-hidden="true" class="h-5 w-5" fill="currentColor"
-                                                viewbox="0 0 24 24">
-                                                <path clip-rule="evenodd"
-                                                    d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.489.5.092.682-.218.682-.482 0-.237-.009-.868-.014-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.156-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.942 0-1.091.39-1.984 1.029-2.685-.103-.253-.446-1.272.098-2.647 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.82c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.375.202 2.394.1 2.647.64.701 1.028 1.594 1.028 2.685 0 3.839-2.338 4.685-4.566 4.935.359.309.678.922.678 1.855 0 1.338-.012 2.419-.012 2.746 0 .267.18.577.688.482A10.001 10.001 0 0 0 22 12c0-5.523-4.477-10-10-10Z"
-                                                    fill-rule="evenodd"></path>
-                                            </svg>
+                                <div class="flex items-center gap-3">
+                                    <div class="relative">
+                                        <button id="settings-btn" class="hidden sm:flex items-center gap-1 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+                                            Contribution settings
+                                            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                    <div class="relative">
+                                        <button id="year-selector" class="flex items-center gap-2 px-3 py-1.5 text-sm border border-[var(--border-color)] rounded-md hover:bg-[var(--bg-secondary)] transition-colors">
+                                            <span id="current-year">2025</span>
+                                            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                                        </button>
+                                        <div id="year-dropdown" class="hidden absolute right-0 mt-1 w-24 bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-md shadow-lg z-50">
+                                            <button class="w-full text-left px-3 py-2 text-sm hover:bg-[var(--bg-secondary)] rounded-t-md" onclick="changeYear(2026)">2026</button>
+                                            <button class="w-full text-left px-3 py-2 text-sm bg-[var(--bg-secondary)]" onclick="changeYear(2025)">2025</button>
+                                            <button class="w-full text-left px-3 py-2 text-sm hover:bg-[var(--bg-secondary)] rounded-b-md" onclick="changeYear(2024)">2024</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="contribution-graph-wrapper p-4 border border-[var(--border-color)] rounded-lg bg-[var(--bg-secondary)]">
+                                <div class="min-w-[750px]">
+                                    <!-- Months Header -->
+                                    <div class="flex mb-2">
+                                        <div class="w-8"></div>
+                                        <div class="flex-1 grid grid-cols-12 gap-1 text-xs text-[var(--text-secondary)]">
+                                            <div class="col-span-1">Feb</div>
+                                            <div class="col-span-1">Mar</div>
+                                            <div class="col-span-1">Apr</div>
+                                            <div class="col-span-1">May</div>
+                                            <div class="col-span-1">Jun</div>
+                                            <div class="col-span-1">Jul</div>
+                                            <div class="col-span-1">Aug</div>
+                                            <div class="col-span-1">Sep</div>
+                                            <div class="col-span-1">Oct</div>
+                                            <div class="col-span-1">Nov</div>
+                                            <div class="col-span-1">Dec</div>
+                                            <div class="col-span-1">Jan</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Days + Heatmap -->
+                                    <div class="flex">
+                                        <!-- Days Column -->
+                                        <div class="w-8 flex flex-col justify-between text-xs text-[var(--text-secondary)] py-1 mr-2">
+                                            <div class="h-3"></div>
+                                            <div class="h-3">Mon</div>
+                                            <div class="h-3"></div>
+                                            <div class="h-3">Wed</div>
+                                            <div class="h-3"></div>
+                                            <div class="h-3">Fri</div>
+                                            <div class="h-3"></div>
+                                        </div>
+                                        
+                                        <!-- Heatmap Grid -->
+                                        <div id="contribution-graph" class="flex-1 grid grid-rows-7 gap-[3px]">
+                                            <!-- Will be generated by JS -->
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Footer -->
+                                    <div class="flex items-center justify-between mt-3 text-xs text-[var(--text-secondary)]">
+                                        <a href="#" class="hover:text-[var(--link-color)] transition-colors">Learn how we count contributions</a>
+                                        <div class="flex items-center gap-2">
+                                            <span>Less</span>
+                                            <div class="flex gap-1">
+                                                <div class="w-3 h-3 rounded-sm contribution-0" title="No contributions"></div>
+                                                <div class="w-3 h-3 rounded-sm contribution-1" title="1-9 contributions"></div>
+                                                <div class="w-3 h-3 rounded-sm contribution-2" title="10-19 contributions"></div>
+                                                <div class="w-3 h-3 rounded-sm contribution-3" title="20-29 contributions"></div>
+                                                <div class="w-3 h-3 rounded-sm contribution-4" title="30+ contributions"></div>
+                                            </div>
+                                            <span>More</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contribution Activity -->
+                        <div class="mt-6">
+                            <h3 class="text-base font-normal mb-4">Contribution activity</h3>
+                            
+                            <div class="border-l-2 border-[var(--border-color)] ml-3 space-y-4">
+                                <!-- January 2026 -->
+                                <div class="relative pl-6">
+                                    <div class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-[var(--border-color)]"></div>
+                                    <h4 class="text-sm font-semibold mb-2">January <span id="current-year-activity">2026</span></h4>
+                                    
+                                    <div class="space-y-3">
+                                        <div class="flex items-start gap-3 text-sm">
+                                            <i data-lucide="git-commit" class="w-4 h-4 mt-0.5 text-[var(--accent-purple)]"></i>
+                                            <div>
+                                                <span class="text-[var(--text-secondary)]">Created</span>
+                                                <span class="font-semibold">12 commits</span>
+                                                <span class="text-[var(--text-secondary)]">in</span>
+                                                <a href="#" class="text-[var(--link-color)] hover:underline">futbotecaApi</a>
+                                                <span class="text-[var(--text-secondary)]">and</span>
+                                                <a href="#" class="text-[var(--link-color)] hover:underline">portafolio</a>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-start gap-3 text-sm">
+                                            <i data-lucide="git-pull-request" class="w-4 h-4 mt-0.5 text-[var(--accent-green)]"></i>
+                                            <div>
+                                                <span class="text-[var(--text-secondary)]">Opened</span>
+                                                <span class="font-semibold">3 pull requests</span>
+                                                <span class="text-[var(--text-secondary)]">in</span>
+                                                <a href="#" class="text-[var(--link-color)] hover:underline">EcoCheckFront</a>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-start gap-3 text-sm">
+                                            <i data-lucide="code" class="w-4 h-4 mt-0.5 text-[var(--link-color)]"></i>
+                                            <div>
+                                                <span class="text-[var(--text-secondary)]">Published</span>
+                                                <span class="font-semibold">2 releases</span>
+                                                <span class="text-[var(--text-secondary)]">in</span>
+                                                <a href="#" class="text-[var(--link-color)] hover:underline">futbotecaApi</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- December 2025 -->
+                                <div class="relative pl-6">
+                                    <div class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-[var(--border-color)]"></div>
+                                    <h4 class="text-sm font-semibold mb-2">December 2025</h4>
+                                    
+                                    <div class="space-y-3">
+                                        <div class="flex items-start gap-3 text-sm">
+                                            <i data-lucide="git-commit" class="w-4 h-4 mt-0.5 text-[var(--accent-purple)]"></i>
+                                            <div>
+                                                <span class="text-[var(--text-secondary)]">Created</span>
+                                                <span class="font-semibold">28 commits</span>
+                                                <span class="text-[var(--text-secondary)]">in</span>
+                                                <a href="#" class="text-[var(--link-color)] hover:underline">EcoCheckFront</a>
+                                                <span class="text-[var(--text-secondary)]">and</span>
+                                                <a href="#" class="text-[var(--link-color)] hover:underline">EcoCheckBack</a>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-start gap-3 text-sm">
+                                            <i data-lucide="git-merge" class="w-4 h-4 mt-0.5 text-[var(--accent-green)]"></i>
+                                            <div>
+                                                <span class="text-[var(--text-secondary)]">Merged</span>
+                                                <span class="font-semibold">5 pull requests</span>
+                                                <span class="text-[var(--text-secondary)]">in</span>
+                                                <a href="#" class="text-[var(--link-color)] hover:underline">futbotecaApi</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button class="mt-4 w-full py-2 text-sm text-[var(--link-color)] hover:bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-md transition-colors">
+                                Show more activity
+                            </button>
+                        </div>
+
+                        <!-- About Me -->
+                        <h2 id="about">👨‍💻 Sobre Mí</h2>
+                        <p>
+                            Soy un <strong>Desarrollador Full-Stack</strong> con formación como Técnico Superior en Desarrollo de Aplicaciones Web. 
+                            Me especializo en crear soluciones web eficientes y escalables, con sólidos conocimientos tanto en frontend como en backend.
+                        </p>
+                        <p>
+                            Mi enfoque se centra en escribir código limpio, aplicar buenas prácticas de desarrollo y utilizar tecnologías modernas 
+                            para resolver problemas reales. Tengo experiencia práctica en proyectos que optimizan procesos empresariales y mejoran la experiencia del usuario.
+                        </p>
+                        <p>
+                            Actualmente trabajo con el stack <strong>Angular + .NET</strong>, y siempre estoy aprendiendo nuevas tecnologías para mantenerme actualizado.
+                        </p>
+                        
+                        <!-- Code Block Example -->
+                        <div class="code-editor">
+                            <div class="code-editor-header">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm text-gray-400">javascript</span>
+                                    <span class="text-sm text-gray-500">about-me.js</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <button onclick="runCode('about')" class="px-3 py-1 bg-green-600 hover:bg-green-700 text-white text-sm rounded transition-colors">
+                                        <span class="flex items-center gap-1">
+                                            <i data-lucide="play" class="w-4 h-4"></i>
+                                            Run
+                                        </span>
+                                    </button>
+                                    <button onclick="resetCode('about')" class="px-3 py-1 bg-gray-700 hover:bg-gray-600 text-white text-sm rounded transition-colors">
+                                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <textarea id="code-about" spellcheck="false">const developer = {
+  name: "Mohamed El Khassal",
+  role: "Full-Stack Developer",
+  location: "Spain",
+  skills: ["Angular", ".NET", "TypeScript", "Docker"],
+  passion: "Building scalable web solutions",
+  
+  greet() {
+    return `Hi! I'm ${this.name}, a ${this.role} from ${this.location}.`;
+  }
+};
+
+console.log(developer.greet());
+console.log("🚀 Ready to build amazing things!");</textarea>
+                            <div id="output-about" class="code-output text-gray-300"></div>
+                        </div>
+
+                        <!-- Languages -->
+                        <h3>Lenguajes más utilizados</h3>
+                        <div class="mb-4">
+                            <div id="lang-chart" class="flex h-2 rounded-full overflow-hidden mb-3">
+                                <!-- Language bars will be generated -->
+                            </div>
+                            <div id="lang-legend" class="flex flex-wrap gap-4 text-sm">
+                                <!-- Legend will be generated -->
+                            </div>
+                        </div>
+
+                        <!-- Skills -->
+                        <h2 id="skills">🛠️ Habilidades Técnicas</h2>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold mb-2 flex items-center gap-2">
+                                    <i data-lucide="layout" class="w-4 h-4"></i>
+                                    Frontend
+                                </h4>
+                                <div class="space-y-2" id="frontend-skills">
+                                    <!-- Skills with progress bars -->
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold mb-2 flex items-center gap-2">
+                                    <i data-lucide="server" class="w-4 h-4"></i>
+                                    Backend
+                                </h4>
+                                <div class="space-y-2" id="backend-skills">
+                                    <!-- Skills with progress bars -->
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold mb-2 flex items-center gap-2">
+                                    <i data-lucide="database" class="w-4 h-4"></i>
+                                    Database
+                                </h4>
+                                <div class="space-y-2" id="database-skills">
+                                    <!-- Skills with progress bars -->
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold mb-2 flex items-center gap-2">
+                                    <i data-lucide="cloud" class="w-4 h-4"></i>
+                                    DevOps & Tools
+                                </h4>
+                                <div class="space-y-2" id="devops-skills">
+                                    <!-- Skills with progress bars -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Projects -->
+                        <h2 id="projects">📁 Proyectos Destacados</h2>
+                        
+                        <div class="collapsible expanded" id="project-futbol">
+                            <div class="collapsible-header" onclick="toggleCollapsible('project-futbol')">
+                                <i data-lucide="chevron-down" class="w-4 h-4 chevron"></i>
+                                <i data-lucide="folder-open" class="w-5 h-5 text-[var(--accent-purple)]"></i>
+                                <span class="font-semibold">Fútbol Histórico</span>
+                                <span class="ml-auto text-xs text-[var(--text-secondary)]">Full-Stack Application</span>
+                            </div>
+                            <div class="collapsible-content">
+                                <div class="p-4">
+                                    <p class="mb-4">
+                                        Plataforma completa para amantes del fútbol que permite explorar videos históricos, 
+                                        gestionar perfiles de usuario y administrar contenido multimedia.
+                                    </p>
+                                    
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="badge bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">Angular</span>
+                                        <span class="badge bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400">.NET</span>
+                                        <span class="badge bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400">Firebase</span>
+                                        <span class="badge bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">Azure</span>
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                        <div class="border border-[var(--border-color)] rounded-lg overflow-hidden">
+                                            <img src="futboteca.png" alt="Fútbol Histórico Screenshot" 
+                                                 class="w-full h-48 object-cover cursor-pointer hover:scale-105 transition-transform"
+                                                 onclick="openLightbox('futboteca.png')">
+                                        </div>
+                                        <div class="space-y-2 text-sm">
+                                            <div class="flex items-center gap-2">
+                                                <i data-lucide="star" class="w-4 h-4 text-yellow-500"></i>
+                                                <span>Features:</span>
+                                            </div>
+                                            <ul class="list-disc list-inside text-[var(--text-secondary)] space-y-1">
+                                                <li>Autenticación Firebase</li>
+                                                <li>Panel de administración</li>
+                                                <li>API REST con .NET</li>
+                                                <li>Diseño responsive</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex gap-3">
+                                        <a href="https://futboteca-84cf7.web.app/" target="_blank" 
+                                           class="inline-flex items-center gap-2 px-4 py-2 bg-[var(--link-color)] hover:opacity-90 rounded-lg transition-opacity dark:text-gray-900 font-medium">
+                                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                                            Live Demo
                                         </a>
-                                        <a class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-gray-200 dark:bg-surface-dark text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                                            href="https://www.linkedin.com/in/mohamed-el-khassal/">
-                                            <svg aria-hidden="true" class="h-5 w-5" fill="currentColor"
-                                                viewbox="0 0 24 24">
-                                                <path
-                                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
-                                                </path>
-                                            </svg>
+                                        <a href="https://github.com/Melk236/futbotecaApi" target="_blank" 
+                                           class="inline-flex items-center gap-2 px-4 py-2 border border-[var(--border-color)] hover:bg-[var(--bg-secondary)] rounded-lg transition-colors">
+                                            <i data-lucide="github" class="w-4 h-4"></i>
+                                            Source Code
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="flex-1 flex justify-center md:justify-end">
-                            <div class="w-64 h-64 md:w-80 md:h-80 bg-center bg-no-repeat bg-cover rounded-full"
-                                data-alt="Professional headshot of John Doe"
-                                style='background-image: url("moha.jpg");'>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- Experience Section -->
-                <section class="py-10 md:py-20" id="experience">
-                    <h2
-                        class="text-gray-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-5 pt-5">
-                        Experiencia</h2>
-                    <div class="grid grid-cols-[auto_1fr] gap-x-4 px-4">
-                        <div class="flex flex-col items-center gap-1 pt-3">
-                            <span
-                                class="material-symbols-outlined text-gray-900 dark:text-white text-2xl">business_center</span>
-                            <div class="w-[1.5px] bg-gray-300 dark:bg-gray-700 h-full"></div>
-                        </div>
-                        <div class="flex flex-1 flex-col pb-10 pt-2">
-                            <p class="text-gray-900 dark:text-white text-lg font-medium leading-normal">Desarrollador
-                                Full-Stack</p>
-                            <p class="text-gray-500 dark:text-gray-400 text-base font-normal leading-normal">Grupo
-                                Ecoinver | Marzo 2025 - Actualidad</p>
-                            <ul class="mt-2 list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
-                                <li>Colaboración en el desarrollo del frontend, implementando interfaces de usuario
-                                    dinámicas y responsivas con tecnologías como
-                                    Angular, HTML,CSS y Tailwind CSS.
-                                </li>
-                                <li>Colaboración en la creación y mantenimiento de servicios y API REST en .NET,
-                                    integrando la lógica de negocio con bases de datos
-                                    SQL.</li>
-                                <li>Participación en el despliegue de aplicaciones utilizando Docker, creando y
-                                    gestionando contenedores para distintos entornos
-                                    (desarrollo, pruebas y producción).</li>
-                            </ul>
-                        </div>
 
-                        <div class="flex flex-col items-center gap-1">
-                            <span
-                                class="material-symbols-outlined text-gray-900 dark:text-white text-2xl">business_center</span>
-                        </div>
-                        <div class="flex flex-1 flex-col pb-10">
-                            <p class="text-gray-900 dark:text-white text-lg font-medium leading-normal">Proyecto
-                                Integrado</p>
-                            <p class="text-gray-500 dark:text-gray-400 text-base font-normal leading-normal">Creative
-                                Proyecto Integrado| 4 meses</p>
-                            <ul class="mt-2 list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
-                                <li>Diseño e implementación del frontend con Angular, empleando componentes
-                                    reutilizables y diseño responsivo.</li>
-                                <li>Desarrollo del backend en MYSQL, .NET, creando API REST para la comunicación con el
-                                    frontend.</li>
-                                <li>Despliegue de la aplicación mediante FireBase(FrontEnd) y microsoft Azure(Api y base
-                                    de
-                                    Datos), configurando entornos de desarrollo y
-                                    producción.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-                <!-- Projects Section -->
-                <section class="py-10 md:py-20" id="projects">
-                    <h2
-                        class="text-gray-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-5 pt-5">
-                        Proyectos</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+                        <!-- Experience -->
+                        <h2 id="experience">💼 Experiencia Laboral</h2>
                         
-                        <!-- Project Card 1 -->
-                        <div class="flex flex-col bg-gray-100 dark:bg-surface-dark rounded-xl overflow-hidden group">
-                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover"
-                                data-alt="Screenshot of Project Beta user interface"
-                                style='background-image: url("futboteca.png");'>
+                        <div class="commit-timeline">
+                            <div class="commit-item highlight">
+                                <div class="flex items-start justify-between mb-2">
+                                    <h4 class="font-semibold">Desarrollador Full-Stack</h4>
+                                    <span class="text-sm text-[var(--text-secondary)]">Mar 2025 - Present</span>
+                                </div>
+                                <p class="text-[var(--accent-purple)] font-medium mb-2">Grupo Ecoinver</p>
+                                <ul class="list-disc list-inside text-[var(--text-secondary)] space-y-1">
+                                    <li>Desarrollo frontend con Angular, HTML, CSS y Tailwind CSS</li>
+                                    <li>Creación de API REST en .NET con integración SQL</li>
+                                    <li>Despliegue con Docker en múltiples entornos (dev, staging, prod)</li>
+                                    <li>Optimización de rendimiento y experiencia de usuario</li>
+                                </ul>
                             </div>
-                            <div class="p-6 flex flex-col flex-grow">
-                                <h3 class="text-gray-900 dark:text-white text-xl font-bold">Fútbol Histórico</h3>
-                                <p class="text-gray-600 dark:text-gray-400 mt-2 flex-grow"> Proyecto Full-Stack que
-                                    permite a los usuarios explorar videos históricos de fútbol,
-                                    acceder a los perfiles de otros usuarios y gestionar contenido de manera intuitiva.
-                                    Incluye autenticación de usuarios y funcionalidades para interactuar con el
-                                    contenido de la plataforma.</p>
-                                <div class="mt-4 flex flex-wrap gap-2">
-                                    <span
-                                        class="text-xs font-medium bg-primary/20 text-primary rounded-full px-3 py-1">Angular</span>
-                                    <span
-                                        class="text-xs font-medium bg-primary/20 text-primary rounded-full px-3 py-1">.NET</span>
-                                    <span
-                                        class="text-xs font-medium bg-primary/20 text-primary rounded-full px-3 py-1">FireBase</span>
-                                    <span
-                                        class="text-xs font-medium bg-primary/20 text-primary rounded-full px-3 py-1">Microsoft
-                                        Azure</span>
+                            
+                            <div class="commit-item">
+                                <div class="flex items-start justify-between mb-2">
+                                    <h4 class="font-semibold">Proyecto Integrado</h4>
+                                    <span class="text-sm text-[var(--text-secondary)]">2024 - 4 meses</span>
                                 </div>
-                                <div class="mt-6 flex gap-4">
-                                    <a class="text-primary font-medium hover:underline" href="https://futboteca-84cf7.web.app/">Live Site</a>
-                                    <a class="text-primary font-medium hover:underline" href="https://github.com/Melk236/futbotecaApi">Source Code</a>
-                                </div>
+                                <p class="text-[var(--accent-purple)] font-medium mb-2">Creative Proyecto Integrado</p>
+                                <ul class="list-disc list-inside text-[var(--text-secondary)] space-y-1">
+                                    <li>Frontend completo con Angular y componentes reutilizables</li>
+                                    <li>Backend .NET con MySQL y Entity Framework</li>
+                                    <li>Despliegue en Firebase (frontend) y Microsoft Azure (API + DB)</li>
+                                    <li>Implementación de sistema de autenticación JWT</li>
+                                </ul>
                             </div>
                         </div>
 
-                    </div>
-                </section>
-                <!-- Contact Section -->
-                <section class="py-10 md:py-20" id="contact">
-                    <div class="mx-auto max-w-2xl text-center">
-                        <h2
-                            class="text-gray-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
-                            Contacto</h2>
-                        <p class="mt-2 text-lg leading-8 text-gray-600 dark:text-gray-400">Actualmente estoy abierto a
-                            nuevas oportunidades. No dudes en enviarme un mensaje.</p>
-                    </div>
-                    <form action="https://formspree.io/f/mqageano" class="mx-auto mt-10 max-w-xl" method="POST">
-                        <div class="grid grid-cols-1 gap-x-8 gap-y-6">
-                            <div>
-                                <label class="block text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200"
-                                    for="name">Nombre</label>
-                                <div class="mt-2.5">
-                                    <input autocomplete="name"
-                                        class="block w-full rounded-md border-0 px-3.5 py-2 bg-gray-100 dark:bg-surface-dark text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
-                                        id="name" name="name" type="text" />
-                                </div>
+                        <!-- Education -->
+                        <h2 id="education">🎓 Educación</h2>
+                        <div class="border border-[var(--border-color)] rounded-lg p-4">
+                            <div class="flex items-start justify-between mb-2">
+                                <h4 class="font-semibold">Técnico Superior en Desarrollo de Aplicaciones Web</h4>
+                                <span class="text-sm text-[var(--text-secondary)]">2023 - 2025</span>
                             </div>
-                            <div>
-                                <label class="block text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200"
-                                    for="email">Email</label>
-                                <div class="mt-2.5">
-                                    <input autocomplete="email"
-                                        class="block w-full rounded-md border-0 px-3.5 py-2 bg-gray-100 dark:bg-surface-dark text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
-                                        id="email" name="email" type="email" />
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200"
-                                    for="message">Mensaje</label>
-                                <div class="mt-2.5">
-                                    <textarea
-                                        class="block w-full rounded-md border-0 px-3.5 py-2 bg-gray-100 dark:bg-surface-dark text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
-                                        id="message" name="message" rows="4"></textarea>
-                                </div>
-                            </div>
+                            <p class="text-[var(--text-secondary)] mb-2">IES Murgi</p>
+                            <p class="text-sm">Formación especializada en desarrollo web full-stack con tecnologías modernas. 
+                               Especial énfasis en desarrollo backend,frameworks frontend y metodologías ágiles.</p>
                         </div>
-                        <div class="mt-10">
-                            <button
-                                class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:opacity-90 transition-opacity"
-                                type="submit">
-                                <span class="truncate">Mensaje</span>
+
+                        <!-- Contact -->
+                        <h2 id="contact">📫 Contacto</h2>
+                        <p>¿Interesado en trabajar juntos? ¡Me encantaría saber de ti!</p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+                            <div class="flex items-center gap-3 p-4 border border-[var(--border-color)] rounded-lg hover:border-[var(--link-color)] hover:shadow-md transition-all group cursor-pointer"
+                                 onclick="openEmailModal()">
+                                <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
+                                    <i data-lucide="mail" class="w-5 h-5 text-red-600"></i>
+                                </div>
+                                <div class="min-w-0 flex-1">
+                                    <div class="font-medium">Email</div>
+                                    <div class="text-sm text-[var(--text-secondary)] truncate">elkhassalmohamed05@gmail.com</div>
+                                </div>
+                                <button onclick="event.stopPropagation(); copyEmailSimple();" 
+                                        class="opacity-0 group-hover:opacity-100 p-2 hover:bg-[var(--bg-secondary)] rounded transition-all shrink-0"
+                                        title="Copiar email">
+                                    <i data-lucide="copy" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            
+                            <a href="https://github.com/Melk236" target="_blank"
+                               class="flex items-center gap-3 p-4 border border-[var(--border-color)] rounded-lg hover:border-[var(--link-color)] hover:shadow-md transition-all">
+                                <div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                                    <i data-lucide="github" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <div class="font-medium">GitHub</div>
+                                    <div class="text-sm text-[var(--text-secondary)]">@Melk236</div>
+                                </div>
+                            </a>
+                            
+                            <a href="https://www.linkedin.com/in/mohamed-el-khassal/" target="_blank"
+                               class="flex items-center gap-3 p-4 border border-[var(--border-color)] rounded-lg hover:border-[var(--link-color)] hover:shadow-md transition-all">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                                    <i data-lucide="linkedin" class="w-5 h-5 text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <div class="font-medium">LinkedIn</div>
+                                    <div class="text-sm text-[var(--text-secondary)]">mohamed-el-khassal</div>
+                                </div>
+                            </a>
+                            
+                            <button onclick="downloadResume()"
+                                    class="flex items-center gap-3 p-4 border border-[var(--border-color)] rounded-lg hover:border-[var(--link-color)] hover:shadow-md transition-all text-left">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                                    <i data-lucide="file-text" class="w-5 h-5 text-green-600"></i>
+                                </div>
+                                <div>
+                                    <div class="font-medium">CV</div>
+                                    <div class="text-sm text-[var(--text-secondary)]">Descargar PDF</div>
+                                </div>
                             </button>
                         </div>
-                    </form>
-                </section>
+
+                        <!-- Footer -->
+                        <div class="mt-12 pt-8 border-t border-[var(--border-color)] text-center text-sm text-[var(--text-secondary)]">
+                            <p>💻 con ❤️ por Mohamed El Khassal</p>
+                            <p class="mt-2">
+                                <span class="inline-flex items-center gap-1">
+                                    <i data-lucide="star" class="w-4 h-4"></i>
+                                    <span id="star-count">0</span> stars
+                                </span>
+                                <span class="mx-2">|</span>
+                                <span class="inline-flex items-center gap-1 cursor-pointer hover:text-[var(--link-color)]" onclick="incrementStars()">
+                                    <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                                    Dar star
+                                </span>
+                            </p>
+                            <p class="mt-4 text-xs">
+                                Tip: Presiona <kbd class="px-1.5 py-0.5 bg-[var(--bg-secondary)] rounded">Ctrl</kbd> + 
+                                <kbd class="px-1.5 py-0.5 bg-[var(--bg-secondary)] rounded">K</kbd> para buscar
+                            </p>
+                        </div>
+                    </article>
+                </main>
             </div>
-        </main>
-        <!-- Footer -->
-        <footer class="bg-gray-100 dark:bg-surface-dark">
-            <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8">
-                <div class="md:flex md:items-center md:justify-between">
-                    <div class="flex justify-center space-x-6 md:order-2">
-                        <a class="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary" href="https://github.com/Melk236">
-                            <span class="sr-only">GitHub</span>
-                            <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
-                                <path clip-rule="evenodd"
-                                    d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.489.5.092.682-.218.682-.482 0-.237-.009-.868-.014-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.156-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.942 0-1.091.39-1.984 1.029-2.685-.103-.253-.446-1.272.098-2.647 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.82c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.375.202 2.394.1 2.647.64.701 1.028 1.594 1.028 2.685 0 3.839-2.338 4.685-4.566 4.935.359.309.678.922.678 1.855 0 1.338-.012 2.419-.012 2.746 0 .267.18.577.688.482A10.001 10.001 0 0 0 22 12c0-5.523-4.477-10-10-10Z"
-                                    fill-rule="evenodd"></path>
-                            </svg>
-                        </a>
-                        <a class="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary" href="https://www.linkedin.com/in/mohamed-el-khassal/">
-                            <span class="sr-only">LinkedIn</span>
-                            <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
-                                <path
-                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
-                                </path>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="mt-8 md:mt-0 md:order-1">
-                        <p class="text-center text-sm leading-5 text-gray-500 dark:text-gray-400">© 2025 Mohamed El Khassal. All
-                            rights reserved.</p>
-                    </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-[9999] bg-black/90 hidden items-center justify-center p-4" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Screenshot" class="max-w-full max-h-[90vh] rounded-lg">
+        <button class="absolute top-4 right-4 p-2 text-white hover:bg-white/20 rounded-full" onclick="closeLightbox()">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+    </div>
+
+    <!-- Email Modal -->
+    <div id="email-modal" class="fixed inset-0 z-[9999] bg-black/50 hidden items-center justify-center p-4">
+        <div class="bg-[var(--bg-primary)] rounded-lg max-w-md w-full p-6 shadow-2xl">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-xl font-semibold flex items-center gap-2">
+                    <i data-lucide="mail" class="w-6 h-6 text-red-500"></i>
+                    Enviar Email
+                </h3>
+                <button onclick="closeEmailModal()" class="p-2 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            
+            <div class="text-center mb-6">
+                <div class="text-5xl mb-4">📧</div>
+                <p class="text-[var(--text-secondary)] mb-2">Mi dirección de email:</p>
+                <div class="flex items-center justify-center gap-2 bg-[var(--bg-secondary)] rounded-lg p-3 mb-4">
+                    <code class="text-lg font-mono text-[var(--text-primary)]">elkhassalmohamed05@gmail.com</code>
+                    <button onclick="copyEmailFromModal()" class="p-2 hover:bg-[var(--border-color)] rounded transition-colors" title="Copiar">
+                        <i data-lucide="copy" class="w-5 h-5"></i>
+                    </button>
                 </div>
             </div>
-        </footer>
+            
+            <div class="space-y-3">
+                <a id="email-link" href="mailto:elkhassalmohamed05@gmail.com?subject=Contacto%20desde%20Portfolio&body=Hola%20Mohamed,%0A%0A" 
+                   class="flex items-center justify-center gap-2 w-full py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium transition-colors">
+                    <i data-lucide="external-link" class="w-5 h-5"></i>
+                    Abrir cliente de correo
+                </a>
+                
+                <button onclick="copyEmailFromModal()" 
+                        class="flex items-center justify-center gap-2 w-full py-3 border border-[var(--border-color)] hover:bg-[var(--bg-secondary)] rounded-lg font-medium transition-colors">
+                    <i data-lucide="copy" class="w-5 h-5"></i>
+                    Copiar email al portapapeles
+                </button>
+            </div>
+            
+            <p class="text-xs text-[var(--text-secondary)] text-center mt-4">
+                Si el botón no funciona, simplemente copia el email y pégalo en tu cliente de correo.
+            </p>
+        </div>
     </div>
-</body>
 
+    <!-- Raw Markdown Modal -->
+    <div id="raw-modal" class="fixed inset-0 z-[9999] bg-black/50 hidden items-center justify-center p-4">
+        <div class="bg-[var(--bg-primary)] rounded-lg max-w-4xl w-full max-h-[90vh] flex flex-col">
+            <div class="flex items-center justify-between p-4 border-b border-[var(--border-color)]">
+                <h3 class="font-semibold">README.md (Raw)</h3>
+                <button onclick="closeRawModal()" class="p-2 hover:bg-[var(--bg-secondary)] rounded-lg">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="flex-1 overflow-auto p-4">
+                <pre class="font-mono text-sm"><code id="raw-content"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== DATA ==========
+        const skills = {
+            frontend: [
+                { name: 'Angular', level: 90, color: 'bg-red-500' },
+                { name: 'TypeScript', level: 85, color: 'bg-blue-500' },
+                { name: 'HTML5/CSS3', level: 95, color: 'bg-orange-500' },
+                { name: 'Tailwind CSS', level: 88, color: 'bg-cyan-500' },
+                { name: 'JavaScript', level: 92, color: 'bg-yellow-500' },
+            ],
+            backend: [
+                { name: '.NET / C#', level: 80, color: 'bg-purple-500' },
+                { name: 'Node.js', level: 75, color: 'bg-green-500' },
+                { name: 'PHP', level: 65, color: 'bg-yellow-600' },
+            ],
+            database: [
+                { name: 'SQL Server', level: 82, color: 'bg-red-600' },
+                { name: 'MySQL', level: 85, color: 'bg-blue-600' },
+                { name: 'MariaDB', level: 60, color: 'bg-green-600' },
+            ],
+            devops: [
+                { name: 'Docker', level: 70, color: 'bg-blue-600' },
+                { name: 'Git/GitHub', level: 88, color: 'bg-gray-600' },
+                { name: 'Azure', level: 65, color: 'bg-blue-500' },
+                
+            ]
+        };
+
+        const languages = [
+            { name: 'TypeScript', percentage: 35, color: '#3178c6' },
+            { name: 'C#', percentage: 25, color: '#239120' },
+            { name: 'HTML/CSS', percentage: 20, color: '#e34c26' },
+            { name: 'JavaScript', percentage: 15, color: '#f1e05a' },
+            { name: 'PHP', percentage: 5, color: '#3572A5' },
+        ];
+
+        const badges = [
+          
+            { label: 'Angular', color: 'bg-red-600', text: 'white', level: 'Advanced', projects: 5 },
+            { label: '.NET', color: 'bg-purple-600', text: 'white', level: 'Intermediate', projects: 4 },
+            { label: 'TypeScript', color: 'bg-blue-600', text: 'white', level: 'Advanced', projects: 6 },
+            { label: 'Docker', color: 'bg-blue-500', text: 'white', level: 'Intermediate', projects: 2 },
+            { label: 'Azure', color: 'bg-blue-700', text: 'white', level: 'Beginner', projects: 1 },
+            { label: 'Firebase', color: 'bg-orange-500', text: 'white', level: 'Intermediate', projects: 3 },
+            { label: 'Open to Work', color: 'bg-green-600', text: 'white', level: 'Available', projects: 0 },
+        ];
+
+        let starCount = 42;
+
+        // ========== INITIALIZATION ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            initTheme();
+            generateTOC();
+            generateBadges();
+            generateGitHubStats();
+            generateContributionGraph(currentYear);
+            generateLanguageChart();
+            renderSkills();
+            initSearch();
+            initKonamiCode();
+            animateProgressBars();
+            
+            // Typing effect for title
+            typeWriter();
+            
+            // Recreate icons after all dynamic content is loaded
+            setTimeout(() => lucide.createIcons(), 100);
+        });
+
+        // ========== THEME ==========
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.getElementById('hljs-light').disabled = true;
+                document.getElementById('hljs-dark').disabled = false;
+            }
+            
+            document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+        }
+
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            document.getElementById('hljs-light').disabled = isDark;
+            document.getElementById('hljs-dark').disabled = !isDark;
+        }
+
+        // ========== TABLE OF CONTENTS ==========
+        function generateTOC() {
+            const headings = document.querySelectorAll('h2[id], h3[id]');
+            const toc = document.getElementById('toc');
+            
+            headings.forEach(heading => {
+                const item = document.createElement('a');
+                item.href = `#${heading.id}`;
+                item.className = `toc-item block text-sm hover:text-[var(--link-color)] transition-colors ${heading.tagName === 'H3' ? 'sub' : ''}`;
+                item.textContent = heading.textContent;
+                item.onclick = (e) => {
+                    e.preventDefault();
+                    document.getElementById(heading.id).scrollIntoView({ behavior: 'smooth' });
+                };
+                toc.appendChild(item);
+            });
+            
+            // Active section indicator
+            window.addEventListener('scroll', () => {
+                let current = '';
+                headings.forEach(heading => {
+                    const sectionTop = heading.offsetTop;
+                    if (scrollY >= sectionTop - 200) {
+                        current = heading.id;
+                    }
+                });
+                
+                document.querySelectorAll('.toc-item').forEach(item => {
+                    item.classList.toggle('active', item.getAttribute('href') === `#${current}`);
+                });
+            });
+        }
+
+        // ========== BADGES ==========
+        function generateBadges() {
+            const container = document.getElementById('badges-container');
+            
+            badges.forEach(badge => {
+                const el = document.createElement('span');
+                el.className = `badge ${badge.color} text-${badge.text}`;
+                el.textContent = badge.label;
+                
+                // Tooltip events
+                el.addEventListener('mouseenter', (e) => showTooltip(e, `Level: ${badge.level} | Projects: ${badge.projects}`));
+                el.addEventListener('mouseleave', hideTooltip);
+                el.addEventListener('click', () => {
+                    showNotification(`🔍 Filtrando proyectos con ${badge.label}...`);
+                });
+                
+                container.appendChild(el);
+            });
+        }
+
+        // ========== GITHUB STATS ==========
+        function generateGitHubStats() {
+            const stats = [
+                { icon: 'users', label: 'Followers', value: '150+', color: 'text-blue-500' },
+                { icon: 'git-commit', label: 'Commits (2024)', value: '350+', color: 'text-green-500' },
+                { icon: 'book', label: 'Repositories', value: '25', color: 'text-purple-500' },
+                { icon: 'star', label: 'Total Stars', value: starCount.toString(), color: 'text-yellow-500' },
+            ];
+            
+            const container = document.getElementById('github-stats');
+            stats.forEach((stat, index) => {
+                const div = document.createElement('div');
+                div.className = 'p-4 border border-[var(--border-color)] rounded-lg flex items-center gap-3 fade-in';
+                div.style.animationDelay = `${index * 0.1}s`;
+                div.innerHTML = `
+                    <i data-lucide="${stat.icon}" class="w-8 h-8 ${stat.color}"></i>
+                    <div>
+                        <div class="text-2xl font-bold">${stat.value}</div>
+                        <div class="text-sm text-[var(--text-secondary)]">${stat.label}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+            
+            lucide.createIcons();
+        }
+
+        // ========== CONTRIBUTION GRAPH ==========
+        let currentYear = 2025;
+        let contributionData = {};
+        
+        function generateContributionGraph(year = 2025) {
+            const container = document.getElementById('contribution-graph');
+            container.innerHTML = '';
+            
+            // Calculate dates for the year
+            const startDate = new Date(year, 0, 1);
+            const endDate = new Date(year, 11, 31);
+            const startDay = startDate.getDay(); // 0 = Sunday, 1 = Monday, etc.
+            
+            // Generate or retrieve data for this year
+            if (!contributionData[year]) {
+                contributionData[year] = generateYearData(year);
+            }
+            
+            const data = contributionData[year];
+            const totalContributions = data.reduce((a, b) => a + b, 0);
+            document.getElementById('contributions-count').textContent = totalContributions;
+            
+            // Create 7 rows (one for each day of week)
+            for (let row = 0; row < 7; row++) {
+                const rowDiv = document.createElement('div');
+                rowDiv.className = 'grid grid-flow-col gap-[3px]';
+                
+                // Calculate how many weeks to show (53 max)
+                for (let week = 0; week < 53; week++) {
+                    const cell = document.createElement('div');
+                    
+                    // Calculate which day of the year this cell represents
+                    const dayIndex = week * 7 + row - startDay;
+                    
+                    if (dayIndex >= 0 && dayIndex < data.length) {
+                        const contributions = data[dayIndex];
+                        let level = 0;
+                        if (contributions > 0) level = 1;
+                        if (contributions >= 10) level = 2;
+                        if (contributions >= 20) level = 3;
+                        if (contributions >= 30) level = 4;
+                        
+                        cell.className = `w-3 h-3 rounded-sm contribution-${level} cursor-pointer hover:ring-2 hover:ring-[var(--text-secondary)] hover:ring-offset-1 hover:ring-offset-[var(--bg-secondary)] transition-all`;
+                        
+                        // Calculate date for tooltip
+                        const cellDate = new Date(year, 0, dayIndex + 1);
+                        const dateStr = cellDate.toLocaleDateString('en-US', { 
+                            weekday: 'long', 
+                            year: 'numeric', 
+                            month: 'long', 
+                            day: 'numeric' 
+                        });
+                        
+                        cell.title = `${contributions} contribution${contributions !== 1 ? 's' : ''} on ${dateStr}`;
+                        
+                        // Click to show details
+                        cell.addEventListener('click', () => {
+                            showNotification(`📊 ${contributions} contribution${contributions !== 1 ? 's' : ''} on ${dateStr}`);
+                        });
+                    } else {
+                        cell.className = 'w-3 h-3 rounded-sm bg-transparent';
+                    }
+                    
+                    rowDiv.appendChild(cell);
+                }
+                
+                container.appendChild(rowDiv);
+            }
+        }
+        
+        function generateYearData(year) {
+            const daysInYear = year % 4 === 0 ? 366 : 365;
+            const data = [];
+            
+            // Generate realistic looking data (more activity on weekdays, less on weekends)
+            for (let i = 0; i < daysInYear; i++) {
+                const date = new Date(year, 0, i + 1);
+                const dayOfWeek = date.getDay();
+                
+                // Less activity on weekends (0 = Sunday, 6 = Saturday)
+                let baseProbability = 0.6;
+                if (dayOfWeek === 0 || dayOfWeek === 6) {
+                    baseProbability = 0.3;
+                }
+                
+                // Random activity
+                let contributions = 0;
+                if (Math.random() < baseProbability) {
+                    contributions = Math.floor(Math.random() * 25) + 1;
+                }
+                
+                data.push(contributions);
+            }
+            
+            return data;
+        }
+        
+        function changeYear(year) {
+            currentYear = year;
+            document.getElementById('current-year').textContent = year;
+            document.getElementById('current-year-activity').textContent = year;
+            document.getElementById('year-dropdown').classList.add('hidden');
+            generateContributionGraph(year);
+            
+            // Update button styles
+            const buttons = document.querySelectorAll('#year-dropdown button');
+            buttons.forEach(btn => {
+                if (btn.textContent === year.toString()) {
+                    btn.classList.add('bg-[var(--bg-secondary)]');
+                } else {
+                    btn.classList.remove('bg-[var(--bg-secondary)]');
+                }
+            });
+            
+            // Recreate icons after change
+            lucide.createIcons();
+        }
+        
+        // Year selector toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const yearSelector = document.getElementById('year-selector');
+            const yearDropdown = document.getElementById('year-dropdown');
+            
+            yearSelector.addEventListener('click', () => {
+                yearDropdown.classList.toggle('hidden');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!yearSelector.contains(e.target) && !yearDropdown.contains(e.target)) {
+                    yearDropdown.classList.add('hidden');
+                }
+            });
+        });
+
+        // ========== LANGUAGES CHART ==========
+        function generateLanguageChart() {
+            const chart = document.getElementById('lang-chart');
+            const legend = document.getElementById('lang-legend');
+            
+            languages.forEach(lang => {
+                const bar = document.createElement('div');
+                bar.className = 'lang-bar';
+                bar.style.width = `${lang.percentage}%`;
+                bar.style.backgroundColor = lang.color;
+                bar.title = `${lang.name}: ${lang.percentage}%`;
+                chart.appendChild(bar);
+                
+                const legendItem = document.createElement('div');
+                legendItem.className = 'flex items-center gap-2 cursor-pointer hover:opacity-80';
+                legendItem.innerHTML = `
+                    <div class="w-3 h-3 rounded-full" style="background-color: ${lang.color}"></div>
+                    <span>${lang.name} <span class="text-[var(--text-secondary)]">${lang.percentage}%</span></span>
+                `;
+                legend.appendChild(legendItem);
+            });
+        }
+
+        // ========== SKILLS ==========
+        function renderSkills() {
+            const renderSkillBar = (skill) => `
+                <div class="flex items-center gap-3">
+                    <span class="w-24 text-sm">${skill.name}</span>
+                    <div class="flex-1 progress-bar">
+                        <div class="progress-fill ${skill.color}" style="width: 0%" data-width="${skill.level}%"></div>
+                    </div>
+                    <span class="w-10 text-sm text-[var(--text-secondary)] text-right">${skill.level}%</span>
+                </div>
+            `;
+            
+            document.getElementById('frontend-skills').innerHTML = skills.frontend.map(renderSkillBar).join('');
+            document.getElementById('backend-skills').innerHTML = skills.backend.map(renderSkillBar).join('');
+            document.getElementById('database-skills').innerHTML = skills.database.map(renderSkillBar).join('');
+            document.getElementById('devops-skills').innerHTML = skills.devops.map(renderSkillBar).join('');
+        }
+
+        function animateProgressBars() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const bars = entry.target.querySelectorAll('.progress-fill');
+                        bars.forEach(bar => {
+                            setTimeout(() => {
+                                bar.style.width = bar.getAttribute('data-width');
+                            }, 200);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            document.querySelectorAll('#frontend-skills, #backend-skills, #database-skills, #devops-skills')
+                .forEach(el => observer.observe(el));
+        }
+
+        // ========== CODE EDITOR ==========
+        const defaultCodes = {
+            about: document.getElementById('code-about').value
+        };
+
+        function runCode(id) {
+            const code = document.getElementById(`code-${id}`).value;
+            const output = document.getElementById(`output-${id}`);
+            
+            output.innerHTML = '';
+            
+            try {
+                // Capture console.log output
+                const originalLog = console.log;
+                const logs = [];
+                console.log = (...args) => {
+                    logs.push(args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' '));
+                };
+                
+                // Execute code
+                eval(code);
+                
+                // Restore console.log
+                console.log = originalLog;
+                
+                // Display output
+                output.innerHTML = logs.length > 0 ? logs.join('\n') : 'Code executed successfully (no output)';
+                output.classList.remove('text-red-400');
+                output.classList.add('text-gray-300');
+            } catch (error) {
+                output.innerHTML = `Error: ${error.message}`;
+                output.classList.remove('text-gray-300');
+                output.classList.add('text-red-400');
+            }
+        }
+
+        function resetCode(id) {
+            document.getElementById(`code-${id}`).value = defaultCodes[id];
+            document.getElementById(`output-${id}`).innerHTML = '';
+        }
+
+        // ========== COLLAPSIBLE ==========
+        function toggleCollapsible(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('expanded');
+            lucide.createIcons();
+        }
+
+        // ========== LIGHTBOX ==========
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').classList.remove('hidden');
+            document.getElementById('lightbox').classList.add('flex');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+            document.getElementById('lightbox').classList.remove('flex');
+        }
+
+        // ========== SEARCH ==========
+        function initSearch() {
+            const searchTrigger = document.getElementById('search-trigger');
+            const searchOverlay = document.getElementById('search-overlay');
+            const searchInput = document.getElementById('search-input');
+            const searchResults = document.getElementById('search-results');
+            
+            // Keyboard shortcut
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    searchOverlay.classList.add('active');
+                    searchInput.focus();
+                }
+                if (e.key === 'Escape') {
+                    searchOverlay.classList.remove('active');
+                }
+            });
+            
+            searchTrigger.addEventListener('click', () => {
+                searchOverlay.classList.add('active');
+                searchInput.focus();
+            });
+            
+            searchOverlay.addEventListener('click', (e) => {
+                if (e.target === searchOverlay) {
+                    searchOverlay.classList.remove('active');
+                }
+            });
+            
+            // Search functionality
+            const searchableItems = [
+                { label: 'Sobre Mí', action: () => scrollTo('about') },
+                { label: 'Habilidades', action: () => scrollTo('skills') },
+                { label: 'Proyectos', action: () => scrollTo('projects') },
+                { label: 'Experiencia', action: () => scrollTo('experience') },
+                { label: 'Educación', action: () => scrollTo('education') },
+                { label: 'Contacto', action: () => scrollTo('contact') },
+                { label: 'Fútbol Histórico (Proyecto)', action: () => toggleCollapsible('project-futbol') },
+                { label: 'Descargar CV', action: () => downloadResume() },
+                { label: 'Cambiar Tema', action: () => toggleTheme() },
+                { label: 'Enviar Email', action: () => openEmailModal() },
+                { label: 'Copiar Email', action: () => copyEmailSimple() },
+            ];
+            
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                const filtered = searchableItems.filter(item => 
+                    item.label.toLowerCase().includes(query)
+                );
+                
+                searchResults.innerHTML = filtered.map(item => `
+                    <div class="p-3 hover:bg-[var(--bg-secondary)] rounded-lg cursor-pointer flex items-center gap-3" 
+                         onclick="executeSearchAction('${item.label}')">
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-[var(--text-secondary)]"></i>
+                        <span>${item.label}</span>
+                    </div>
+                `).join('');
+                
+                if (filtered.length === 0) {
+                    searchResults.innerHTML = '<div class="p-3 text-[var(--text-secondary)]">No se encontraron resultados</div>';
+                }
+                
+                lucide.createIcons();
+            });
+        }
+
+        function executeSearchAction(label) {
+            const actions = {
+                'Sobre Mí': () => scrollTo('about'),
+                'Habilidades': () => scrollTo('skills'),
+                'Proyectos': () => scrollTo('projects'),
+                'Experiencia': () => scrollTo('experience'),
+                'Educación': () => scrollTo('education'),
+                'Contacto': () => scrollTo('contact'),
+                'Fútbol Histórico (Proyecto)': () => { scrollTo('projects'); setTimeout(() => toggleCollapsible('project-futbol'), 300); },
+                'Descargar CV': () => downloadResume(),
+                'Cambiar Tema': () => toggleTheme(),
+                'Enviar Email': () => openEmailModal(),
+                'Copiar Email': () => copyEmailSimple(),
+            };
+            
+            document.getElementById('search-overlay').classList.remove('active');
+            if (actions[label]) actions[label]();
+        }
+
+        function scrollTo(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ========== UTILITIES ==========
+        function showNotification(message) {
+            const notif = document.getElementById('notification');
+            notif.textContent = message;
+            notif.classList.add('show');
+            setTimeout(() => notif.classList.remove('show'), 3000);
+        }
+
+        function copyEmail(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const email = 'elkhassalmohamed@gmail.com';
+            
+            // Try to copy to clipboard
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(email).then(() => {
+                    showNotification('📧 Email copiado al portapapeles');
+                }).catch(() => {
+                    // Fallback for older browsers
+                    fallbackCopyTextToClipboard(email);
+                });
+            } else {
+                // Fallback for non-secure contexts
+                fallbackCopyTextToClipboard(email);
+            }
+            
+            return false;
+        }
+        
+        function fallbackCopyTextToClipboard(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showNotification('📧 Email copiado al portapapeles');
+                } else {
+                    showNotification('❌ No se pudo copiar el email');
+                }
+            } catch (err) {
+                showNotification('❌ Error al copiar');
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        // Simple email copy (for the hover button)
+        function copyEmailSimple() {
+            const email = 'melkh236@gmail.com';
+            
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(email).then(() => {
+                    showNotification('📧 Email copiado al portapapeles');
+                });
+            } else {
+                fallbackCopyTextToClipboard(email);
+            }
+        }
+
+        // Email Modal Functions
+        function openEmailModal() {
+            const modal = document.getElementById('email-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            lucide.createIcons();
+        }
+
+        function closeEmailModal() {
+            const modal = document.getElementById('email-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function copyEmailFromModal() {
+            copyEmailSimple();
+        }
+
+        // Close email modal when clicking outside
+        document.getElementById('email-modal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('email-modal')) {
+                closeEmailModal();
+            }
+        });
+
+        // Close email modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeEmailModal();
+            }
+        });
+
+        function downloadResume() {
+            showNotification('📄 Descargando CV...');
+            
+            // Create a temporary link to download the PDF
+            const link = document.createElement('a');
+            link.href = 'curriculum.pdf';
+            link.download = 'CV-Mohamed-El-Khassal.pdf';
+            link.target = '_blank';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            setTimeout(() => {
+                showNotification('✅ CV descargado correctamente');
+            }, 500);
+        }
+
+        function incrementStars() {
+            starCount++;
+            document.getElementById('star-count').textContent = starCount;
+            showNotification('⭐ ¡Gracias por tu star!');
+            
+            // Save to localStorage
+            localStorage.setItem('stars', starCount);
+        }
+
+        function toggleRawMode() {
+            const rawContent = `# Mohamed El Khassal - Full-Stack Developer
+
+## 🚀 Sobre Mí
+Desarrollador Full-Stack con experiencia en Angular, .NET y tecnologías cloud.
+
+## 🛠️ Tech Stack
+- Frontend: Angular, TypeScript, Tailwind CSS
+- Backend: .NET, Node.js
+- Database: SQL Server, MySQL, MariaDB
+- DevOps: Docker, Azure
+
+## 📫 Contacto
+- Email: elkhassalmohamed05@gmail.com
+- GitHub: https://github.com/Melk236
+- LinkedIn: https://www.linkedin.com/in/mohamed-el-khassal/
+`;
+            
+            document.getElementById('raw-content').textContent = rawContent;
+            document.getElementById('raw-modal').classList.remove('hidden');
+            document.getElementById('raw-modal').classList.add('flex');
+        }
+
+        function closeRawModal() {
+            document.getElementById('raw-modal').classList.add('hidden');
+            document.getElementById('raw-modal').classList.remove('flex');
+        }
+
+        function showGitLog() {
+            showNotification('📜 Git log disponible en consola (Ctrl+Shift+J)');
+            console.log(`
+📜 GIT LOG - Career History
+═══════════════════════════════════════════════
+
+commit 2025-03-15
+Author: Mohamed El Khassal <melkh236@gmail.com>
+Date:   Mon Mar 15 2025
+
+    🎉 Initial commit - First day at Grupo Ecoinver
+    
+    - Started as Full-Stack Developer
+    - Working with Angular + .NET stack
+    - Docker deployment experience
+
+commit 2024-12-20
+Author: Mohamed El Khassal <melkh236@gmail.com>
+Date:   Fri Dec 20 2024
+
+    🎓 Graduated - DAW (Desarrollo de Aplicaciones Web)
+    
+    - Completed vocational training
+    - Built Fútbol Histórico project
+    - Learned cloud deployment
+
+commit 2024-08-01
+Author: Mohamed El Khassal <melkh236@gmail.com>
+Date:   Thu Aug 1 2024
+
+    🚀 Started learning Angular and .NET
+    
+    - First steps in full-stack development
+    - Built first API with .NET
+    - Learned about Docker
+            `);
+        }
+
+        // ========== TOOLTIP ==========
+        function showTooltip(e, text) {
+            const tooltip = document.getElementById('global-tooltip');
+            tooltip.textContent = text;
+            tooltip.classList.add('visible');
+            tooltip.style.left = e.clientX + 10 + 'px';
+            tooltip.style.top = e.clientY - 30 + 'px';
+        }
+
+        function hideTooltip() {
+            document.getElementById('global-tooltip').classList.remove('visible');
+        }
+
+        // ========== TYPING EFFECT ==========
+        function typeWriter() {
+            const title = document.querySelector('#title span');
+            const text = title.textContent;
+            title.textContent = '';
+            
+            let i = 0;
+            const type = () => {
+                if (i < text.length) {
+                    title.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, 50);
+                }
+            };
+            
+            setTimeout(type, 500);
+        }
+
+        // ========== KONAMI CODE ==========
+        function initKonamiCode() {
+            const konami = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+            let index = 0;
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === konami[index]) {
+                    index++;
+                    if (index === konami.length) {
+                        showNotification('🎮 Konami Code activated! Check console for secrets.');
+                        console.log(`
+    ╔══════════════════════════════════════════╗
+    ║   🎮 KONAMI CODE ACTIVATED! 🎮           ║
+    ║                                          ║
+    ║   Secret unlocked:                       ║
+    ║   "The best error message is the         ║
+    ║    one that never shows up."             ║
+    ║                              - Unknown   ║
+    ║                                          ║
+    ║   Keep coding! 💻                        ║
+    ╚══════════════════════════════════════════╝
+                        `);
+                        index = 0;
+                    }
+                } else {
+                    index = 0;
+                }
+            });
+        }
+
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('mobile-overlay');
+            
+            if (sidebar.classList.contains('translate-x-0')) {
+                // Close menu
+                sidebar.classList.remove('translate-x-0');
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            } else {
+                // Open menu
+                sidebar.classList.remove('hidden');
+                sidebar.classList.remove('-translate-x-full');
+                sidebar.classList.add('translate-x-0');
+                overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+        
+        // Close mobile menu function
+        function closeMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('mobile-overlay');
+            
+            sidebar.classList.remove('translate-x-0');
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('#sidebar a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 1024) {
+                    closeMobileMenu();
+                }
+            });
+        });
+        
+        // Close menu on resize to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                closeMobileMenu();
+                const sidebar = document.getElementById('sidebar');
+                sidebar.classList.remove('hidden');
+            }
+        });
+        
+        // Close menu with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+    </script>
+</body>
 </html>
